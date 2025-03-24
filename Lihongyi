@@ -25,3 +25,14 @@ optimisation of batch
 
 batch size does not affect the running time from 1-1000 because of parallel computing (v100 GPU)
 large batch number affect the running time instead of batch size
+
+small batch means large batch number, bring noise, which is better for training 
+
+batch size is the hyperparameter that you need to decide/train
+
+momentum 
+
+(vallina) gradient descent: only local gradient decide the next step
+gradient descent + momentum: previous movement and local gradient decide the next step
+  m is the gradient sum of all previous gradient
+
