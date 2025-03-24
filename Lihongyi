@@ -36,3 +36,9 @@ momentum
 gradient descent + momentum: previous movement and local gradient decide the next step
   m is the gradient sum of all previous gradient
 
+gradual learning rate
+  large gradient -> small n
+
+  n -> n/signma t i (parameter dependent)
+    1) root mean square of gradient with momentum -> Adagrad： every gradient has same weight 
+    2) RMSProp: define the weight of past gradient with momentum as a
