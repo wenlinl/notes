@@ -1,0 +1,27 @@
+Taylor Series Approximation 泰勒展开
+
+【机器学习】用泰勒公式来理解梯度下降
+迷路的小画家
+https://www.bilibili.com/video/BV1YsqSY8EiW/?spm_id_from=333.1391.0.0&p=4&vd_source=a2b94abb30c6e58f1774bbf718480c2b
+
+如果函数在某一个点的各阶导数都存在，从低阶项展开到高阶项，在收敛半径内近似效果越来越好
+
+将泰勒公式运用到多元函数（这里是二阶多项式）：包含对每个变量的一阶偏导与二阶偏导
+  一阶偏导：梯度 g
+  二阶偏导：海森矩阵Hessian Matrix H
+
+V transpose H V > 0 -> local minima -> Hessian matrix is positive definite (all eigen value>0) 
+无条件极值问题
+Same rule for local minima, local maxima, saddle point
+
+u: eigen vector of H 
+lambda: eigen value of u
+
+theta = theta point - eigen vector u -> loss function decrease
+
+In empirical study, saddle point is greatly more than local minima
+
+optimisation of batch
+
+batch size does not affect the running time from 1-1000 because of parallel computing (v100 GPU)
+large batch number affect the running time instead of batch size
