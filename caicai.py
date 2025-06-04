@@ -1,1 +1,34 @@
-# 
+# 22 交叉熵损失函数
+# L(w) = -加和(真实标签*ln(预测概率)+(1-真实标签)*ln(1-预测概率))
+
+极大似然估计Maximum Likelihood Estimate MLE
+   
+# tensor实现二分类交叉熵损失函数
+import torch
+# Loss = -(y*ln(sigma)+(1-y)*ln(1-sigma)
+# y = 真实标签
+# sigma = 预测函数（需要X，w）
+# m = 样本量
+m = 3*pow(10,3)
+torch.random.manual_seed(420)
+X = torch.rand((m,4),dtype=torch.float32)
+w = torch.rand((4,1),dtype=torch.float32)
+y = torch.randint(low=0,high=2,size=(m,1),dtype=torch.float32)
+zhat = torch.mm(X,w)
+sigma = torch.sigmoid(zhat)
+sigma.shape
+
+single_loss = -(y*torch.log(sigma)+(1-y)*torch.log(1-sigma))
+total_loss = -torch.sum(y*torch.log(sigma)+(1-y)*torch.log(1-sigma))
+average_loss = -(1/m)*torch.sum(y*torch.log(sigma)+(1-y)*torch.log(1-sigma))
+
+
+# pytorch实现二分类交叉熵损失函数
+# class BCEWithLogitsLoss内置了sigmoid函数与交叉熵函数，会自动计算sigmoid值，所以需要输入zhat与真实标签
+# class BCELoss没有sigmoid函数，需要输入sigma和真实标签
+
+import torch.nn as nn
+criterion = nn.BCELoss()
+loss = criterion(sigma, y)
+criterion2 = nn.BCEWithLogitsLoss(zhat, y)
+# reduction参数 (reduction = "mean"/"sum"/"none")默认求均值
