@@ -54,3 +54,7 @@ criterion = nn.CrossEntropyLoss()
 criterion(zhat,y.long())
 
 # 25 神经网络的优化
+# w(t+1) = w(t) - lr*w的偏导数 ->每一个权重w1、w2....的偏导数
+
+# 26 反向传播
+# 只需要一次正向传播，储存传播中计算的中间值，损失函数链式求导后的公式所需代入得值都得到了
